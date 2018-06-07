@@ -1,0 +1,6 @@
+pyinstaller
+simplejson
+pynput
+subprocess
+datetime
+email
