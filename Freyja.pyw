@@ -1,4 +1,4 @@
-# Freyja v1.0.0.0
+# Freyja v1.1.2.3
 
 from pynput.keyboard import Key, Listener
 import logging
