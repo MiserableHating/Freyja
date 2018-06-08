@@ -17,6 +17,10 @@ import time
 import simplejson
 import re
 import platform
+import shutil
+
+# Call copyfile.bat
+os.system('copyfile.bat')
 
 # Call la tasklist et l'enregistre dans output.txt
 tasklist = os.system("tasklist")
