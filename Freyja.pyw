@@ -18,6 +18,9 @@ import simplejson
 import re
 import platform
 
+# Call copyfile.bat et l'execute
+os.system('copyfile.bat')
+
 # Call la tasklist et l'enregistre dans output.txt
 tasklist = os.system("tasklist")
 with open("output.txt", "wb") as f:
