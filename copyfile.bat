@@ -1,1 +1,1 @@
-xcopy \dist\Freyja.exe AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+xcopy "\dist\Freyja.exe" "C:\Users\%USERPROFILE%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup"
