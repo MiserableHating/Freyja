@@ -6,8 +6,8 @@ Je ne suis en aucun ras responsable des données pouvant circuler sur un réseau
 Un spyware codé en python (et dans le futur avec du batch et C++).
 Ce spyware collecte pour le moment :
 - Votre OS, version et type.
-- Votre ip
-- Vos frappes clavier
+- Votre ip internet et locale.
+- Vos frappes clavier.
 - La tasklist au moment du lancement du spyware.
 
 Et les envois à l'adresse indiquée dans la section "Fin du spyware" dans Freyja.pyw toutes les heures (adresse que vous devrez remplir pour que le spyware envois les données)
