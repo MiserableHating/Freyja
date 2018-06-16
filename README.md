@@ -10,7 +10,8 @@ Ce spyware collecte pour le moment :
 - Vos frappes clavier.
 - La tasklist au moment du lancement du spyware.
 
-Et les envois à l'adresse indiquée dans la section "Fin du spyware" dans Freyja.pyw toutes les heures (adresse que vous devrez remplir pour que le spyware envois les données)
+Et les envois à l'adresse indiquée dans Freyja.pyw toutes les heures (adresse que vous devrez remplir pour que le spyware envois les données)
+Les lignes que vous devez modifier sont les suivantes : 22, 23, 24, suivez les indications. (Laissez les "", par contre.)
 
 Les frappes clavier sont enregistrées dans le fichier key_log.txt qui sera créé quand le spyware sera lancé.
 La tasklist est enregistrée dans le fichier output.txt qui sera également créé au moment du lancement du spyware.
